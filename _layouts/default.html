@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+		<link href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="description" content="{{ page.description }}" />
+		<meta name="keywords" content="google,maps,nokia maps,api{{page.keywords | join: ','}}" />
+
+		{% assign sep = "" %}
+		{% if page.title %}
+			{% assign sep = " - " %}
+		{% endif %}
+		<title>GoogleMaps2NokiaMaps {{ sep }}{{ page.title }}</title>
+
+		<!-- blog style -->
+		<link rel="stylesheet" href="/css/screen.css" type="text/css"/>
+		<link rel="stylesheet" href="/css/js.css" type="text/css"/>
+		<link rel="stylesheet" href="/css/html.css" type="text/css"/>
+
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-114776-17']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+	</head>
+
+	<body class="two-column docs">
+    <div id="sandbar">
+		<header id="gc-googlebar">
+	    	<span class="signed-in">
+		      <h1>Google Maps to Nokia Maps {{ sep }}{{ page.title }}</h1>
+	 		</span>
+	 	    
+		</header>
+	</div>
+	 <div id="gc-wrapper">
+	 	<div id="gc-main">
+      		<div id="gc-sidebar">
+      				<a href="/">Home</a> <br>
+      				<a href="/blog/mapsimple">Map Simple</a> <br>
+					<a href="/blog/maplanguage">Map Language</a><br>
+					<a href="/blog/mapgeolocation">Map Geolocation</a>		<br> 
+					<a href="/blog/icon-complex">Icon Complex</a><br>
+					<a href="/blog/infowindow_simple">Info Window Simple</a><br>
+					 
+					<a href="/blog/heatmap">Heat Map</a><br>
+					 
+					<a href="/blog/geocode">Geocode</a><br>
+					<a href="/blog/reverse_geocode">Reverse Geocode</a><br>
+					 
+					
+      		</div>
+      		<div id="gc-content">
+      			{{ content }}
+      		</div>
+      	</div>
+	 </div>
+		    
+		   
+			 
+	</body>
+</html>

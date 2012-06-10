@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- 
+	Example from Nokia Maps API Playground, for more information visit http://api.maps.nokia.com
+ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=7; IE=EmulateIE9"/> 
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+		<title>Nokia Maps API Example: Basic map with components</title>
+		<meta name="description" content="How to get a basic map with all UI components enabled"/>
+		<meta name="keywords" content="basiccomponents,Getting started"/>
+		<!-- For scaling content for mobile devices, setting the viewport to the width of the device-->
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+		<!-- Styling for example container (NoteContainer & Logger)  -->
+		 
+		<script type="text/javascript" charset="UTF-8" src="http://api.maps.nokia.com/2.2.0//jsl.js?with=all"></script>
+	 
+		<style type="text/css">
+			html {
+				overflow:hidden;
+			}
+			
+			body {
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+			
+			#mapContainer {
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="mapContainer"></div>
+ 
+		<script type="text/javascript" id="exampleJsSource">
+		 
+nokia.Settings.set( "appId", "_peU-uCkp-j8ovkzFGNU"); 
+nokia.Settings.set( "authenticationToken", "gBoUkAMoxoqIWfxWA5DuMQ");
+
+// Get the DOM node to which we will append the map
+var mapContainer = document.getElementById("mapContainer");
+// Create a map inside the map container DOM node
+var map = new nokia.maps.map.Display(mapContainer, {
+	// initial center and zoom level of the map
+	center: [52.51, 13.4],
+	zoomLevel: 10,
+	components: [
+		// ZoomBar provides an UI to zoom the map in & out
+		new nokia.maps.map.component.ZoomBar(), 
+		// We add the behavior component to allow panning / zooming of the map
+		new nokia.maps.map.component.Behavior(),
+		 
+		new nokia.maps.map.component.Overview(),
+		// Creates UI to easily switch between street map satellite and terrain mapview modes
+		new nokia.maps.map.component.TypeSelector(),
+		/* Shows a scale bar in the bottom right corner of the map depicting
+		 * ratio of a distance on the map to the corresponding distance in the real world
+		 * in either kilometers or miles
+		 */ 
+		new nokia.maps.map.component.ScaleBar(),
+		/* Positioning will show a set "map to my GPS position" UI button
+		 * Note: this component will only be visible if W3C geolocation API
+		 * is supported by the browser and if you agree to share your location.
+		 * If you location can not be found the positioning button will reset
+		 * itself to its initial state
+		 */
+		new nokia.maps.positioning.component.Positioning(),
+		// Add ContextMenu component so we get context menu on right mouse click / long press tap
+		new nokia.maps.map.component.ContextMenu()
+	]
+});
+
+ 
+		</script>
+	</body>
+</html>
