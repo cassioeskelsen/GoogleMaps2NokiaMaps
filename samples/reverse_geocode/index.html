@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GoogleMaps2NokiaMaps - Reverse Geocoding</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <style type="text/css">
+      html, body {
+       
+        overflow:hidden;
+      }     
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
+
+      #map_canvas {
+        width: 400px;
+        height: 400px;
+        left: 0px;
+        top: 60px;
+        position: absolute;
+      }
+      
+      #mapContainer {
+        width: 400px;
+        height: 400px;
+        left: 450px;
+        top: 60px;
+        position: absolute;
+      }
+    </style>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" charset="UTF-8" src="http://api.maps.nokia.com/2.2.0//jsl.js?with=all"></script>
+<script type="text/javascript" src="google.js"></script>
+<script type="text/javascript" src="nokia.js"></script>
+<script type="text/javascript">
+   
+
+  function codeLatLng() {
+    var input = document.getElementById("latlng").value;
+    var latlngStr = input.split(",",2);
+    var lat = parseFloat(latlngStr[0]);
+    var lng = parseFloat(latlngStr[1]);
+
+    codeLatLangGoogle(lat,lng);
+    codeLatLangNokiaMaps(lat,lng);
+    
+  }
+</script>
+</head>
+<body >
+	<div>
+	  <input id="latlng" type="textbox" value="-23.54972, -46.63548">
+	</div>
+	<div>
+	  <input type="button" value="Reverse Geocode" onclick="codeLatLng()">
+	</div>
+	<div id="map_canvas"></div>
+	<div id='mapContainer'></div>
+	<script type="text/javascript"> 
+        googleMaps();
+        nokiaMaps(); 
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GoogleMaps2NokiaMaps - icon complex</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <style type="text/css">
+      html, body {
+       
+        overflow:hidden;
+      }     
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
+
+      #map_canvas {
+        width: 400px;
+        height: 400px;
+        left: 0px;
+        top: 0;
+        position: absolute;
+      }
+      
+      #mapContainer {
+        width: 400px;
+        height: 400px;
+        left: 450px;
+        top: 0;
+        position: absolute;
+      }
+    </style>
+    <!-- chamada à api do Google Maps e código que mostra o mapa do Google Maps. Coloquei em JS separados para não ficar muito confuso aqui -->
+    <!--
+    Include the maps javascript with sensor=true because this code is using a
+    sensor (a GPS locator) to determine the user's location.
+    See: https://developers.google.com/apis/maps/documentation/javascript/basics#SpecifyingSensor
+    -->
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+          </head>
+    <script type="text/javascript" src="google.js"></script>
+     
+    <!-- Clamada a API do Nokia Maps e código que mostra o mapa do Nokia Maps-->
+    <script type="text/javascript" charset="UTF-8" src="http://api.maps.nokia.com/2.2.0//jsl.js?with=all"></script>
+    <script type="text/javascript" src="/samples/icon_complex/nokia.js"></script>
+
+  </head>  
+  <body>
+    <div id="map_canvas"></div>
+    <div id='mapContainer'> </div>
+       <script type="text/javascript"> 
+        googleMaps();
+         nokiaMaps(); 
+       </script>
+  </body>
+</html>

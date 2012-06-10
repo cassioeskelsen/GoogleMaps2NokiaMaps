@@ -1,0 +1,197 @@
+---
+layout: default
+title: Geocode
+---
+
+Retorna a posição (long/lat) de um determinado endereço.
+<p>Eventualmente o Google Maps pode apontar para uma posição diferente do Nokia Maps. Isso é causado por informações corretas em alguns mapas. Pela minha experiência, o Google Maps tende a ter mais 
+  erros nesse sentido do que o Nokia Maps </p>
+
+<p>Tanto Nokia Maps quanto o Google Maps podem falhar em encontrar a posição correta ou retornar mais de uma posição para um endereço. Por isso é interessante que o endereço seja o mais específico possível. No caso do Nokia Maps ele tende a falhar se passarmos o nome "Brasil" ao invés de "Brazil"</p>
+
+<h2>Google Maps</h2>
+
+{% highlight js %} 
+var geocoder;
+var map;
+var infowindow = new google.maps.InfoWindow();
+var marker;
+
+function googleMaps()
+{
+  geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-23.54972, -46.63548);
+    var myOptions = {
+      zoom:1,
+      center: latlng,
+      mapTypeId: 'roadmap'
+    }
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  
+}
+
+function codeLatLangGoogle(address){
+ 
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map, 
+            position: results[0].geometry.location
+        });
+        map.setZoom(16);
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+ 
+}
+{% endhighlight %}
+
+ 
+<h2>Nokia Maps</h2>
+
+{% highlight js %} 
+var mapNokia;
+var infoBubbles;
+var position;
+var searchCenter;
+var resultSet;
+
+function nokiaMaps()
+{
+  nokia.Settings.set( "appId", "_peU-uCkp-j8ovkzFGNU");
+  nokia.Settings.set( "authenticationToken", "gBoUkAMoxoqIWfxWA5DuMQ");
+
+  searchCenter = new nokia.maps.geo.Coordinate(23.54972, -46.63548);
+  var mapContainer = document.getElementById("mapContainer");
+   
+  infoBubbles = new nokia.maps.map.component.InfoBubbles();
+
+  mapNokia = new nokia.maps.map.Display(mapContainer, {
+    center: [-23.54972, -46.63548],
+    zoomLevel: 1,
+    components: [infoBubbles,new nokia.maps.map.component.Behavior(),new nokia.maps.map.component.ZoomBar(), ]
+  });
+ 
+}
+
+function codeLatLangNokiaMaps(address)
+{ 
+  nokia.places.search.manager.findPlaces({
+    searchTerm :  address,
+    onComplete:  processResults,
+    searchCenter: searchCenter
+  });
+  
+}
+
+var processResults = function (data, requestStatus, requestId) {
+  var i, len, locations, marker;
+  
+   // .findPlaces() for some reason returns "ok" (in lowercase), they are about to fix that TODO: check and remove toUC() if no longer needed
+  if (requestStatus == "OK") {
+    // The function findPlaces() and reverseGeoCode() of  return results in slightly different formats
+    locations = data.results ? data.results.items : [data.location];
+    // We check that at least one location has been found
+    if (locations.length > 0) {
+      // Remove results from previous search from the map
+      if (resultSet) mapNokia.objects.remove(resultSet);
+      // Convert all found locations into a set of markers
+      resultSet = new nokia.maps.map.Container();
+      
+      marker = new nokia.maps.map.StandardMarker(locations[0].position, { text: '1' });
+      resultSet.objects.add(marker);
+      
+      // Next we add the marker(s) to the map's object collection so they will be rendered onto the map
+      mapNokia.objects.add(resultSet);
+      // We zoom the map to a view that encapsulates all the markers into map's viewport
+      mapNokia.zoomTo(resultSet.getBoundingBox(), false);
+
+    } else { 
+      alert("Your search produced no results!");
+    }
+  } else {
+    alert("The search request failed");
+  }
+};
+
+{% endhighlight %}
+
+<h2>HTML</h2>
+
+{% highlight html %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GoogleMaps2NokiaMaps - Geocode</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <style type="text/css">
+      html, body {
+       
+        overflow:hidden;
+      }     
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
+
+      #map_canvas {
+        width: 400px;
+        height: 400px;
+        left: 0px;
+        top: 60px;
+        position: absolute;
+      }
+      
+      #mapContainer {
+        width: 400px;
+        height: 400px;
+        left: 450px;
+        top: 60px;
+        position: absolute;
+      }
+    </style>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" charset="UTF-8" src="http://api.maps.nokia.com/2.2.0//jsl.js?with=all"></script>
+<script type="text/javascript" src="google.js"></script>
+<script type="text/javascript" src="nokia.js"></script>
+<script type="text/javascript">
+   
+
+  function codeLatLng() {
+    var input = document.getElementById("endereco").value;
+    codeLatLangGoogle(input);
+    codeLatLangNokiaMaps(input);
+    
+  }
+</script>
+</head>
+<body >
+  <div>
+    <input id="endereco" type="textbox" value="Rua Paraiba,100, Blumenau, SC, Brazil" size="100">
+  </div>
+  <div>
+    <input type="button" value="Reverse Geocode" onclick="codeLatLng()">
+  </div>
+  <div id="map_canvas"></div>
+  <div id='mapContainer'></div>
+  <script type="text/javascript"> 
+        googleMaps();
+        nokiaMaps(); 
+    </script>
+</body>
+</html>
+{% endhighlight %}
+
+<h2>Resultado</h2>
+
+<a href="/samples/geocode" target="_blank">Página com exemplo completo</a>
+
+
+<img src="/images_posts/geocode.png" width="900px" class="post_img" />
