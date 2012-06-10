@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Map Language
+root: "../"
 ---
 
 Esse exemplo mostra como alterar a linguagem do Mapa. </br> 
@@ -122,7 +123,7 @@ function nokiaMaps()
           </head>
     <script type="text/javascript" src="/samples/maplanguage/google.js"></script>
      
-    <!-- Clamada a API do Nokia Maps e código que mostra o mapa do Nokia Maps-->
+    <!-- Clamada a API do Nokia Maps e código que mostra o mapa do Nokia Maps -->
     <script type="text/javascript" charset="UTF-8" src="http://api.maps.nokia.com/2.2.0//jsl.js?with=all"></script>
     <script type="text/javascript" src="/samples/maplanguage/nokia.js"></script>
 
@@ -139,6 +140,6 @@ function nokiaMaps()
 
 <h2>Resultado</h2>
 
-<a href="/samples/maplanguage" target="_blank">Página com exemplo completo</a>
+<a href="{{ page.root }}samples/maplanguage" target="_blank">Página com exemplo completo</a>
 
-<img src="/images_posts/maplanguage.png" width="900px" class="post_img" />
+<img src="{{ page.root }}images_posts/maplanguage.png" width="900px" class="post_img" />

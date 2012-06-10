@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Map Geolocation
+root: "../"
 ---
 
 Esse exemplo mostra como pegar a posição atual do usuário pelas APIs de Geolocation disponível nos browsers que suportam HTML 5

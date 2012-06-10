@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Heat Map
+root: "../"
 ---
 
 <p>Para listar um heatmap o Google Maps exige que os dados estejam em uma <a href="http://www.google.com/fusiontables/Home/">Google Fusion Table</a> enquanto que o Nokia Maps 

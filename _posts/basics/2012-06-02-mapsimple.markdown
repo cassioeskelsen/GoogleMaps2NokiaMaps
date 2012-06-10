@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Map Simple
+root: "../"
 ---
 
 Exemplo de como mostrar um mapa simples

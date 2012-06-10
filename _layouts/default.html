@@ -15,9 +15,11 @@
 		<title>GoogleMaps2NokiaMaps {{ sep }}{{ page.title }}</title>
 
 		<!-- blog style -->
-		<link rel="stylesheet" href="/css/screen.css" type="text/css"/>
-		<link rel="stylesheet" href="/css/js.css" type="text/css"/>
-		<link rel="stylesheet" href="/css/html.css" type="text/css"/>
+		{% capture root %}{% if page.root %}{{ page.root }}{% else %}{{ post.root }}{% endif %}{%endcapture%}
+
+		<link rel="stylesheet" href="{{ root }}css/screen.css" type="text/css"/>
+		<link rel="stylesheet" href="{{ root }}css/js.css" type="text/css"/>
+		<link rel="stylesheet" href="{{ root }}css/html.css" type="text/css"/>
 
 		<script type="text/javascript">
 
@@ -47,16 +49,16 @@
 	 	<div id="gc-main">
       		<div id="gc-sidebar">
       				<a href="/">Home</a> <br>
-      				<a href="/blog/mapsimple">Map Simple</a> <br>
-					<a href="/blog/maplanguage">Map Language</a><br>
-					<a href="/blog/mapgeolocation">Map Geolocation</a>		<br> 
-					<a href="/blog/icon-complex">Icon Complex</a><br>
-					<a href="/blog/infowindow_simple">Info Window Simple</a><br>
+      				<a href="/mapsimple">Map Simple</a> <br>
+					<a href="/maplanguage">Map Language</a><br>
+					<a href="/mapgeolocation">Map Geolocation</a>		<br> 
+					<a href="/icon-complex">Icon Complex</a><br>
+					<a href="/infowindow_simple">Info Window Simple</a><br>
 					 
-					<a href="/blog/heatmap">Heat Map</a><br>
+					<a href="/heatmap">Heat Map</a><br>
 					 
-					<a href="/blog/geocode">Geocode</a><br>
-					<a href="/blog/reverse_geocode">Reverse Geocode</a><br>
+					<a href="/geocode">Geocode</a><br>
+					<a href="/reverse_geocode">Reverse Geocode</a><br>
 					 
 					
       		</div>

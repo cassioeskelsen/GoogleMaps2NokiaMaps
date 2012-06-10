@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Reverse Geocode
+root: "../"
 ---
 
 Retorna o endereço de um par de coordenadas.

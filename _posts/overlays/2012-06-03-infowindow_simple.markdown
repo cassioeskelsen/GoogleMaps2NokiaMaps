@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Info Window Simple
+root: "../"
 ---
 
 Mostra alguma informação ao clicar em um "balãozinho"
