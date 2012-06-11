@@ -33,7 +33,7 @@ function setMarkers(map, locations) {
   // Origins, anchor positions and coordinates of the marker
   // increase in the X direction to the right and in
   // the Y direction down.
-  var image = new google.maps.MarkerImage('/images_posts/beachflag.png',
+  var image = new google.maps.MarkerImage('../../images_posts/beachflag.png',
       // This marker is 20 pixels wide by 32 pixels tall.
       new google.maps.Size(20, 32),
       // The origin for this image is 0,0.

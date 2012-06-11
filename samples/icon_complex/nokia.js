@@ -36,7 +36,7 @@ function nokiaMaps()
             new nokia.maps.geo.Coordinate(beach[1], beach[2]),{
                     title: beach[0],
                     visibility: true,
-                    icon: "/images_posts/beachflag.png",
+                    icon: "../../images_posts/beachflag.png",
                     // The anchor for this image is the base of the flagpole at 0,32.
                     anchor: new nokia.maps.util.Point(0, 32) });
 
