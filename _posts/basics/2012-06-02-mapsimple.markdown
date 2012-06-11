@@ -69,6 +69,6 @@ Exemplo de como mostrar um mapa simples
 
 <h2>Resultado</h2>
 
-<a href="/samples/mapsimple_sample.html" target="_blank">Página com exemplo completo</a>
+<a href="{{ page.root }}samples/mapsimple_sample.html" target="_blank">Página com exemplo completo</a>
 
-<img src="/images_posts/mapsimple.png" width="900px" class="post_img" />
+<img src="{{ page.root }}images_posts/mapsimple.png" width="900px" class="post_img" />

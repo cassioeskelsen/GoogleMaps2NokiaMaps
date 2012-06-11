@@ -186,6 +186,6 @@ var TOUCH = nokia.maps.dom.Page.browser.touch,
 
 <h2>Resultado</h2>
 
-<a href="/samples/infowindow_simple" target="_blank">Página com exemplo completo</a>
+<a href="{{ page.root }}samples/infowindow_simple" target="_blank">Página com exemplo completo</a>
 
-<img src="/images_posts/infowindow_simple.png" width="900px" class="post_img" />
+<img src="{{ page.root }}images_posts/infowindow_simple.png" width="900px" class="post_img" />

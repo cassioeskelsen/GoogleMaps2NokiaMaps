@@ -199,6 +199,6 @@ function nokiaMaps()
 
 <h2>Resultado</h2>
 
-<a href="/samples/mapgeolocation" target="_blank">Página com exemplo completo</a>
+<a href="{{ page.root }}samples/mapgeolocation" target="_blank">Página com exemplo completo</a>
 
-<img src="/images_posts/mapgeolocation_sample.png" width="900px" class="post_img" />
+<img src="{{ page.root }}images_posts/mapgeolocation_sample.png" width="900px" class="post_img" />

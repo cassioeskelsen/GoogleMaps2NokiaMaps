@@ -192,7 +192,7 @@ var processResults = function (data, requestStatus, requestId) {
 
 <h2>Resultado</h2>
 
-<a href="/samples/geocode" target="_blank">Página com exemplo completo</a>
+<a href="{{ page.root }}samples/geocode" target="_blank">Página com exemplo completo</a>
 
 
-<img src="/images_posts/geocode.png" width="900px" class="post_img" />
+<img src="{{ page.root }}images_posts/geocode.png" width="900px" class="post_img" />

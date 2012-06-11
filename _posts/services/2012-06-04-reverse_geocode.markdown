@@ -210,6 +210,6 @@ function processResults(data, requestStatus, requestId) {
 
 <h2>Resultado</h2>
 
-<a href="/samples/reverse_geocode" target="_blank">Página com exemplo completo</a>
+<a href="{{ page.root }}samples/reverse_geocode" target="_blank">Página com exemplo completo</a>
 <br/>
-<img src="/images_posts/reverse_geocode.png" width="900px" class="post_img" />
+<img src="{{ page.root }}images_posts/reverse_geocode.png" width="900px" class="post_img" />
