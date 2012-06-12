@@ -1,4 +1,4 @@
-GoogleMaps2BingMaps
+GoogleMaps2NokiaMaps
 ===================
 
 Veja os exemplos funcionando em <a href="http://cassioeskelsen.github.com/GoogleMaps2NokiaMaps">http://cassioeskelsen.github.com/GoogleMaps2NokiaMaps</a>
